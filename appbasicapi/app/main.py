@@ -2,6 +2,7 @@ from typing import Union
 
 from fastapi import FastAPI
 from dapr.clients import DaprClient
+import json
 
 app = FastAPI()
 
@@ -19,5 +20,8 @@ def read_item(item_id: int, q: Union[str, None] = None):
 @app.get("/calltimer")
 def call_timer(duration: Union[int, None] = None):
     with DaprClient() as d:
-        resp = d.invoke_method('timerapi', 'timeout', data='{"duration": '+duration+'}')
+        body = {
+            'duration': duration
+        }
+        resp = d.invoke_method('timerapi', 'timeout', data=json.dumps(body))
     return { "resp": resp.text() }
