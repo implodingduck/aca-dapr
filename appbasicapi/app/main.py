@@ -20,8 +20,5 @@ def read_item(item_id: int, q: Union[str, None] = None):
 @app.get("/calltimer")
 def call_timer(duration: Union[int, None] = None):
     with DaprClient() as d:
-        body = {
-            'duration': duration
-        }
-        resp = d.invoke_method('timerapi', 'timeout', data=json.dumps(body))
+        resp = d.invoke_method('timerapi', f'timeout/{duration}')
     return { "resp": resp.text() }

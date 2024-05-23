@@ -13,8 +13,8 @@ def read_root():
     return {"Hello": "World"}
 
 
-@app.get("/timeout/")
-def timeout(duration: Union[int, None] = None):
+@app.get("/timeout/{duration}")
+def timeout(duration: int):
     start = datetime.datetime.now()
     time.sleep(duration)
     end = datetime.datetime.now()
