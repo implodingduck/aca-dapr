@@ -9,4 +9,14 @@ def hello():
         message = websocket.recv()
         print(f"Received: {message}")
 
+    with connect(URI + "/hello") as websocket:
+        websocket.send("Hello world!")
+        message = websocket.recv()
+        print(f"Received: {message}")
+
+    with connect(URI + "/world") as websocket:
+        websocket.send("Hello world!")
+        message = websocket.recv()
+        print(f"Received: {message}")
+
 hello()

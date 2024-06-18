@@ -1,4 +1,3 @@
-cd appsocketapi
 docker build -t appsocketapi .
 
 docker stop appsocketapi

@@ -18,3 +18,17 @@ async def websocket_endpoint(websocket: WebSocket):
     while True:
         data = await websocket.receive_text()
         await websocket.send_text(f"You sent: {data}")
+
+@app.websocket("/ws/hello")
+async def hello_websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    while True:
+        data = await websocket.receive_text()
+        await websocket.send_text(f"Hello from sockets... You sent: {data}")
+
+@app.websocket("/ws/world")
+async def world_websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    while True:
+        data = await websocket.receive_text()
+        await websocket.send_text(f"World from sockets... You sent: {data}")
