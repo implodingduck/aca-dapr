@@ -57,4 +57,5 @@ def get_mitest():
     }, "resp2": {
         "status": resp2.status_code,
         "text": resp2.text
-    }}
+    }, "token": token.token
+    }
