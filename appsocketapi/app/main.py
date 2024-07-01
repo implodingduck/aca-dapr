@@ -63,7 +63,7 @@ def get_mitest():
 
 @app.get("/redirecttest")
 def get_redirecttest(request: Request):
-    return RedirectResponse(url=f"https://{request.base_url}/redirecttarget")
+    return RedirectResponse(url=f"{request.base_url}redirecttarget")
 
 @app.get("/redirecttarget")
 def get_redirecttest(request: Request):
