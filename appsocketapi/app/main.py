@@ -1,6 +1,7 @@
 from typing import Union
 from azure.identity import ManagedIdentityCredential
 from fastapi import FastAPI, WebSocket, Request
+from fastapi.responses import RedirectResponse
 import json
 import os
 import requests
@@ -58,4 +59,15 @@ def get_mitest():
         "status": resp2.status_code,
         "text": resp2.text
     }, "token": token.token
+    }
+
+@app.get("/redirecttest")
+def get_redirecttest():
+    return RedirectResponse(url="/redirecttarget")
+
+@app.get("/redirecttarget")
+def get_redirecttest(request: Request):
+    return {
+        "Hello": "Redirect",
+        "headers": request.headers
     }
