@@ -13,6 +13,8 @@ test_endpoint = os.environ.get("TEST_ENDPOINT")
 credential = ManagedIdentityCredential(client_id=managed_identity_client_id)
 token = credential.get_token(f"{api_uri}/.default")
 
+redirecttest = os.environ.get("REDIRECT_TEST")
+
 app = FastAPI()
 
 
@@ -63,7 +65,7 @@ def get_mitest():
 
 @app.get("/redirecttest")
 def get_redirecttest(request: Request):
-    return RedirectResponse(url=f"{request.base_url}redirecttarget")
+    return RedirectResponse(url=redirecttest, status_code=302)
 
 @app.get("/redirecttarget")
 def get_redirecttest(request: Request):
