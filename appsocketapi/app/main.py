@@ -11,7 +11,7 @@ api_uri = os.environ.get("API_URI")
 test_endpoint = os.environ.get("TEST_ENDPOINT")
 
 credential = ManagedIdentityCredential(client_id=managed_identity_client_id)
-token = credential.get_token(f"{api_uri}/.default")
+
 
 redirecttest = os.environ.get("REDIRECT_TEST")
 
@@ -47,7 +47,7 @@ async def world_websocket_endpoint(websocket: WebSocket):
 
 @app.get("/mitest")
 def get_mitest():
-    
+    token = credential.get_token(f"{api_uri}/.default")
     headers = {
         "Authorization": f"Bearer {token.token}"
     }
