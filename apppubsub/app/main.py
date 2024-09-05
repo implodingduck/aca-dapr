@@ -10,7 +10,7 @@ async def read_root():
 @app.get("/dapr/subscribe")
 async def subscribe():
     subscriptions = [{'pubsubname': 'pubsub',
-                      'topic': 'deathStarStatus',
+                      'queue': 'deathstarstatus',
                       'route': 'dsstatus',
                       'metadata': {
                           'rawPayload': 'true',
