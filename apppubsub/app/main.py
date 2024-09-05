@@ -15,6 +15,7 @@ async def subscribe():
                       'metadata': {
                           'rawPayload': 'true',
                       } }]
+    print(f"Returning subscriptions: {subscriptions}")
     return subscriptions
 
 
