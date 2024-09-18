@@ -33,7 +33,7 @@ async def dsstatus(request: Request):
     print(f"headers: {request.headers}")
     if data==b"triggerdelay" or data.decode("utf-8")=="triggerdelay":    
         print(f"Delaying {req_json['id']}: {datetime.datetime.now()}")
-        time.sleep(os.environ.get("DELAY", 10))
+        time.sleep(int(os.environ.get("DELAY", "10")))
         print(f"Done {req_json['id']}: {datetime.datetime.now()}")
         
     return req_json
