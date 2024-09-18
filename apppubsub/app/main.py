@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Request
+import base64
 
 app = FastAPI()
 
@@ -22,5 +23,10 @@ async def subscribe():
 @app.post("/dsstatus")
 async def dsstatus(request: Request):
     req_json = await request.json()
+    print("-----------------")
     print(f"Received: {req_json}")
+    data = base64.b64decode(req_json['data_base64'])
+    print(f"data: {data}")
+    print(f"headers: {request.headers}")
+    
     return req_json
