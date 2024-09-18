@@ -31,8 +31,8 @@ async def dsstatus(request: Request):
     print(f"data: {data}")
     print(f"headers: {request.headers}")
     if str(data)=="triggerdelay":    
-        print(f"Delaying: {datetime.datetime.now()}")
+        print(f"Delaying {req_json['id']}: {datetime.datetime.now()}")
         time.sleep(360)
-        print(f"Done: {datetime.datetime.now()}")
+        print(f"Done {req_json['id']}: {datetime.datetime.now()}")
         
     return req_json
