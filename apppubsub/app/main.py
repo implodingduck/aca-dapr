@@ -30,7 +30,7 @@ async def dsstatus(request: Request):
     data = base64.b64decode(req_json['data_base64'])
     print(f"data: {data}")
     print(f"headers: {request.headers}")
-    if data==b"triggerdelay" or data=="triggerdelay":    
+    if data==b"triggerdelay" or data.decode("utf-8")=="triggerdelay":    
         print(f"Delaying {req_json['id']}: {datetime.datetime.now()}")
         time.sleep(360)
         print(f"Done {req_json['id']}: {datetime.datetime.now()}")
