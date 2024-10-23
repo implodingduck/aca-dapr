@@ -20,11 +20,11 @@ def me(request: Request):
 @app.get("/create")
 def output_binding_create():
     with DaprClient() as d:
-        resp = d.invoke_binding('outputbinding', 'create', data=f"{datetime.datetime.now()} - {uuid.uuid4()}\n", metadata={ "blobName": "myblob.txt"})
+        resp = d.invoke_binding('outputbinding', 'create', data=f"{datetime.datetime.now()} - {uuid.uuid4()}\n", binding_metadata={ "blobName": "myblob.txt"})
     return {"resp": resp.text()}
 
 @app.get("/read")
 def output_binding_read():
     with DaprClient() as d:
-        resp = d.invoke_binding('outputbinding', 'get', metadata={ "blobName": "myblob.txt", "includeMetadata": "true"})
+        resp = d.invoke_binding('outputbinding', 'get', binding_metadata={ "blobName": "myblob.txt", "includeMetadata": "true"})
     return {"resp": resp.text()}
