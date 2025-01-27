@@ -1,4 +1,5 @@
-fastapi>=0.111.0,<0.113.0
+fastapi==0.115.2
 pydantic>=2.7.0,<3.0.0
 dapr
 fastapi[standard]
+uvicorn==0.30.6
